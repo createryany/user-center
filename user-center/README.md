@@ -130,3 +130,15 @@ MyBatisX 插件，自动根据数据库生成 domain 实体对象、mapper（操
 5. 后端拿到前端传来的 cookie，找到对应的 session
 
 6. 后端从 session 中取出基于该 session 保存的变量（用户登录信息、登录名...）
+
+
+
+## 控制层 Controller 封装请求
+
+```java
+@RestController 适用于编写 restful 风格的 api，返回值默认为 json 类型
+```
+
+controller 层倾向于对请求参数本身的校验，不涉及业务逻辑本身（越少越好）
+
+service 层对业务逻辑的校验（有可能被 controller 之外的类调用）
