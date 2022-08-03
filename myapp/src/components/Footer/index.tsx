@@ -2,28 +2,28 @@ import { GithubOutlined } from '@ant-design/icons';
 import { DefaultFooter } from '@ant-design/pro-components';
 
 const Footer: React.FC = () => {
-  const defaultMessage = '蚂蚁集团体验技术部出品';
+  const defaultMessage = 'Createryan出品';
   const currentYear = new Date().getFullYear();
   return (
     <DefaultFooter
       copyright={`${currentYear} ${defaultMessage}`}
       links={[
         {
-          key: 'Ant Design Pro',
-          title: 'Ant Design Pro',
-          href: 'https://pro.ant.design',
+          key: 'Yan-music',
+          title: 'Yan-music',
+          href: 'http://www.creatercc.com',
+          blankTarget: true,
+        },
+        {
+          key: 'Yan-music-server',
+          title: 'Yan-music-server',
+          href: 'http://admin.creatercc.com',
           blankTarget: true,
         },
         {
           key: 'github',
-          title: <GithubOutlined />,
-          href: 'https://github.com/ant-design/ant-design-pro',
-          blankTarget: true,
-        },
-        {
-          key: 'Ant Design',
-          title: 'Ant Design',
-          href: 'https://ant.design',
+          title: <><GithubOutlined /> createryan GitHub</>,
+          href: 'https://github.com/createryany',
           blankTarget: true,
         },
       ]}

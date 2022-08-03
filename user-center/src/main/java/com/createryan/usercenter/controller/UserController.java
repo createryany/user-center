@@ -72,7 +72,7 @@ public class UserController {
         }
         List<User> userList = userService.list(queryWrapper);
         List<Object> safatyUser = userList.stream().map(user -> userService.getSafetyUser(user).getData()).collect(Collectors.toList());
-        return Result.ok(safatyUser);
+        return Result.ok("", safatyUser);
     }
 
     @PostMapping("/delete")
@@ -85,7 +85,7 @@ public class UserController {
             return Result.fail("没有找到要删除的用户！");
         }
         // removeById 逻辑删除
-        return Result.ok(userService.removeById(id));
+        return Result.ok("删除成功！", userService.removeById(id));
     }
 
     /**
@@ -97,7 +97,6 @@ public class UserController {
     private Result checkAdmin(HttpServletRequest request) {
         // 鉴权仅管理员可查询
         UserDTO user = (UserDTO) request.getSession().getAttribute(USER_LOGIN_STATUS);
-        System.out.println("user = " + user);
         if (user == null) {
             return Result.fail("用户信息不存在！");
         }

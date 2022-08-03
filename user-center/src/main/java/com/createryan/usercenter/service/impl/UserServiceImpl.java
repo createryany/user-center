@@ -38,30 +38,30 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     public Result userRegister(String userAccount, String userPassword, String checkPassword) {
         // 1.校验
         if (StringUtils.isAnyBlank(userAccount, userPassword, checkPassword)) {
-            return Result.fail("");
+            return Result.fail("服务器错误！");
         }
         if (userAccount.length() < 4) {
-            return Result.fail("");
+            return Result.fail("账号长度不能小于 4！");
         }
         if (userPassword.length() < 8 || checkPassword.length() < 8) {
-            return Result.fail("");
+            return Result.fail("密码长度不能小于 8！");
         }
         // 账户名不能包含特殊字符
         String validPattern = ".*[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*()——+|{}【】‘；：”“’。，、？\\\\]+.*";
         Matcher matcher = Pattern.compile(validPattern).matcher(userAccount);
         if (matcher.find()) {
-            return Result.fail("");
+            return Result.fail("账号含有非法字符！");
         }
         // 原密码和校验密码相同
         if (!userPassword.equals(checkPassword)) {
-            return Result.fail("");
+            return Result.fail("两次输入的密码不一致！");
         }
         // 账户不能重复
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_account", userAccount);
         long count = userMapper.selectCount(queryWrapper);
         if (count > 0) {
-            return Result.fail("");
+            return Result.fail("该账户已存在！");
         }
         // 2.加密
         String encryptPassword = DigestUtils.md5DigestAsHex((SALT + userPassword).getBytes());
@@ -71,9 +71,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         user.setUserPassword(encryptPassword);
         boolean saveResult = this.save(user);
         if (!saveResult) {
-            return Result.fail("");
+            return Result.fail("服务器错误！");
         }
-        return Result.ok(user.getId());
+        return Result.ok("注册成功！", user.getId());
     }
 
     @Override
@@ -83,16 +83,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             return Result.fail("用户名或密码不能为空");
         }
         if (userAccount.length() < 4) {
-            return Result.fail("用户名格式不正确！");
+            return Result.fail("账号长度不能小于 4！");
         }
         if (userPassword.length() < 8) {
-            return Result.fail("密码格式不正确！");
+            return Result.fail("密码长度不能小于 8！");
         }
         // 账户名不能包含特殊字符
         String validPattern = ".*[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*()——+|{}【】‘；：”“’。，、？\\\\]+.*";
         Matcher matcher = Pattern.compile(validPattern).matcher(userAccount);
         if (matcher.find()) {
-            return Result.fail("用户名格式不正确！");
+            return Result.fail("账号含有非法字符！");
         }
         // 2.加密
         String encryptPassword = DigestUtils.md5DigestAsHex((SALT + userPassword).getBytes());
@@ -110,7 +110,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         UserDTO safetyUser = (UserDTO) getSafetyUser(user).getData();
         // 4.记录用户登录态
         request.getSession().setAttribute(USER_LOGIN_STATUS, safetyUser);
-        return Result.ok(safetyUser);
+        return Result.ok("登录成功！", safetyUser);
     }
 
 
@@ -127,7 +127,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         safetyUser.setUserStatus(originUser.getUserStatus());
         safetyUser.setCreateTime(originUser.getCreateTime());
         safetyUser.setUserRole(originUser.getUserRole());
-        return Result.ok(safetyUser);
+        return Result.ok("", safetyUser);
     }
 }
 
