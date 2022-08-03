@@ -2,6 +2,7 @@ package com.createryan.usercenter.service;
 
 import com.createryan.usercenter.model.domain.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.createryan.usercenter.utils.Result;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,7 +23,7 @@ public interface UserService extends IService<User> {
      * @param checkPassword 校验密码
      * @return 新用户id
      */
-    long userRegister(String userAccount, String userPassword, String checkPassword);
+    Result userRegister(String userAccount, String userPassword, String checkPassword);
 
     /**
      * 用户登录
@@ -31,5 +32,5 @@ public interface UserService extends IService<User> {
      * @param userPassword 用户密码
      * @return 脱敏后的用户信息
      */
-    User userLogin(String userAccount, String userPassword, HttpServletRequest request);
+    Result userLogin(String userAccount, String userPassword, HttpServletRequest request);
 }

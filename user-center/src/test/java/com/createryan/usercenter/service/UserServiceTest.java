@@ -1,6 +1,7 @@
 package com.createryan.usercenter.service;
 
 import com.createryan.usercenter.model.domain.User;
+import com.createryan.usercenter.utils.Result;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,7 +28,7 @@ class UserServiceTest {
         user.setUserAccount("yany");
         user.setAvatarUrl("http://www.creatercc.com:3090//img/avatorImages/165855874573000.jpg");
         user.setGender(0);
-        user.setUserPassword("helloworld!");
+        user.setUserPassword("12345678");
         user.setPhone("123");
         user.setEmail("456");
 
@@ -41,28 +42,28 @@ class UserServiceTest {
         String userAccount = "yanh";
         String userPassword = "";
         String checkPassword = "123456";
-        long result = userService.userRegister(userAccount, userPassword, checkPassword);
-        Assertions.assertEquals(-1, result);
+        Result result = userService.userRegister(userAccount, userPassword, checkPassword);
+        Assertions.assertFalse(result.getSuccess());
         userAccount = "yy";
         result = userService.userRegister(userAccount, userPassword, checkPassword);
-        Assertions.assertEquals(-1, result);
+        Assertions.assertFalse(result.getSuccess());
         userAccount = "yanh";
         userPassword = "123456";
         result = userService.userRegister(userAccount, userPassword, checkPassword);
-        Assertions.assertEquals(-1, result);
+        Assertions.assertFalse(result.getSuccess());
         userAccount = "yan h";
         userPassword = "12345678";
         result = userService.userRegister(userAccount, userPassword, checkPassword);
-        Assertions.assertEquals(-1, result);
+        Assertions.assertFalse(result.getSuccess());
         checkPassword = "123456789";
         result = userService.userRegister(userAccount, userPassword, checkPassword);
-        Assertions.assertEquals(-1, result);
+        Assertions.assertFalse(result.getSuccess());
         userAccount = "yany";
         checkPassword = "12345678";
         result = userService.userRegister(userAccount, userPassword, checkPassword);
-        Assertions.assertEquals(-1, result);
+        Assertions.assertFalse(result.getSuccess());
         userAccount = "yanh";
         result = userService.userRegister(userAccount, userPassword, checkPassword);
-        Assertions.assertTrue(result > 0);
+        Assertions.assertTrue(result.getSuccess());
     }
 }
