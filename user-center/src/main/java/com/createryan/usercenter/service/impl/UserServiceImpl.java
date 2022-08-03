@@ -1,9 +1,9 @@
 package com.createryan.usercenter.service.impl;
-import java.util.Date;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.createryan.usercenter.model.domain.User;
+import com.createryan.usercenter.model.dto.UserDTO;
 import com.createryan.usercenter.service.UserService;
 import com.createryan.usercenter.mapper.UserMapper;
 import com.createryan.usercenter.utils.Result;
@@ -107,19 +107,26 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             return Result.fail("用户名和密码不匹配！");
         }
         // 3.用户脱敏
-        User safetyUser = new User();
-        safetyUser.setId(user.getId());
-        safetyUser.setUsername(user.getUsername());
-        safetyUser.setUserAccount(user.getUserAccount());
-        safetyUser.setAvatarUrl(user.getAvatarUrl());
-        safetyUser.setGender(user.getGender());
-        safetyUser.setPhone(user.getPhone());
-        safetyUser.setEmail(user.getEmail());
-        safetyUser.setUserStatus(user.getUserStatus());
-        safetyUser.setCreateTime(user.getCreateTime());
-        safetyUser.setUserRole(user.getUserRole());
+        UserDTO safetyUser = (UserDTO) getSafetyUser(user).getData();
         // 4.记录用户登录态
         request.getSession().setAttribute(USER_LOGIN_STATUS, safetyUser);
+        return Result.ok(safetyUser);
+    }
+
+
+    @Override
+    public Result getSafetyUser(User originUser) {
+        UserDTO safetyUser = new UserDTO();
+        safetyUser.setId(originUser.getId());
+        safetyUser.setUsername(originUser.getUsername());
+        safetyUser.setUserAccount(originUser.getUserAccount());
+        safetyUser.setAvatarUrl(originUser.getAvatarUrl());
+        safetyUser.setGender(originUser.getGender());
+        safetyUser.setPhone(originUser.getPhone());
+        safetyUser.setEmail(originUser.getEmail());
+        safetyUser.setUserStatus(originUser.getUserStatus());
+        safetyUser.setCreateTime(originUser.getCreateTime());
+        safetyUser.setUserRole(originUser.getUserRole());
         return Result.ok(safetyUser);
     }
 }

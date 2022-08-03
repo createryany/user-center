@@ -1,8 +1,4 @@
 
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 …
 Usrc/main/java/com/createryan/usercenter/model/domain/request/UserRegisterRequest.java,0\0\00d822a745b076c17f7b72d9ec775058582c7e66
 ‚
@@ -21,14 +17,3 @@ w
 Gsrc/test/java/com/createryan/usercenter/UserCenterApplicationTests.java,c\5\c5fc5b0248585489cedf82595b385c7daf302844
 r
 Bsrc/main/java/com/createryan/usercenter/UserCenterApplication.java,0\7\07e9524569fe6d6f32e43e41c5cd7b3f8372d316
-n
->src/main/java/com/createryan/usercenter/model/domain/User.java,1\5\1508fdd1d4a1a0884116f05bab0c70a1ca8ed630
-p
-@src/main/java/com/createryan/usercenter/service/UserService.java,8\a\8a9b850f989246d83e6db0545f48bb610e60aae5
-y
-Isrc/main/java/com/createryan/usercenter/service/impl/UserServiceImpl.java,2\a\2a94954581272413d9a3a01573c16f988350a54e
-v
-Fsrc/main/java/com/createryan/usercenter/controller/UserController.java,e\b\ebdbe248efe44eb878677709058e11600bda633f
-:
-
-.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
