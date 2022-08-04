@@ -61,22 +61,14 @@ email 邮箱 varchar
 
 user_status 用户状态 int  0 - 正常 
 
-<<<<<<< HEAD
-=======
----
-
->>>>>>> 5c28269f9a80705bf08728d2aa5ecbdfe4b05f1d
 create_time 创建时间（数据插入时间）datetime
 
 update_time 更新时间（数据更新时间）datetime
 
 is_delete 是否删除 0 1（逻辑删除）tinyint
 
-<<<<<<< HEAD
 user_role 用户角色.0-普通用户，1-管理员用户
 
-=======
->>>>>>> 5c28269f9a80705bf08728d2aa5ecbdfe4b05f1d
 
 
 ## 自动生成器
@@ -160,7 +152,6 @@ service 层对业务逻辑的校验（有可能被 controller 之外的类调用
 1. 查询用户
    1. 允许根据用户名查询
 2. 删除用户
-<<<<<<< HEAD
 
 
 
@@ -180,5 +171,3 @@ service 层对业务逻辑的校验（有可能被 controller 之外的类调用
 初始化框架 Ant Design Pro
 
  
-=======
->>>>>>> 5c28269f9a80705bf08728d2aa5ecbdfe4b05f1d
