@@ -15,7 +15,7 @@ import React, { useState } from 'react';
 import { history } from 'umi';
 import {ALLYI_LINK, SYSTEM_LOGO} from "@/constants";
 import styles from './index.less';
-import {useModel} from "@/.umi/plugin-model/useModel";
+import {useModel} from "@@/plugin-model/useModel";
 
 const registerPath = '/user/register';
 

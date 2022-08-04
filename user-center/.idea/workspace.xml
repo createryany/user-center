@@ -5,18 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d4a8f19-b41a-4427-b364-b39c3402029b" name="变更" comment="2.2用户中心(用户服务类的注册和测试)">
-      <change afterPath="$PROJECT_DIR$/../myapp/src/pages/user/Register/index.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myapp/src/pages/user/Register/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../myapp/config/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/config/routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/access.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/access.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/pages/Admin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/pages/Admin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/pages/Admin/UserManager/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/pages/Admin/UserManage/index.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/pages/Admin/UserManager/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/pages/Admin/UserManage/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../myapp/src/pages/user/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/pages/user/Login/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../myapp/src/services/ant-design-pro/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/services/ant-design-pro/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/services/ant-design-pro/typings.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/services/ant-design-pro/typings.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/model/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/model/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/utils/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/utils/Result.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +171,7 @@
       <workItem from="1659520552578" duration="12163000" />
       <workItem from="1659535213887" duration="10680000" />
       <workItem from="1659547301772" duration="6663000" />
-      <workItem from="1659593237665" duration="9801000" />
+      <workItem from="1659593237665" duration="11708000" />
     </task>
     <task id="LOCAL-00001" summary="2.1.1用户中心(测试用户服务)">
       <created>1659521231016</created>
