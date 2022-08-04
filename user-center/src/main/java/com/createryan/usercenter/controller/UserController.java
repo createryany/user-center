@@ -60,6 +60,14 @@ public class UserController {
         return userService.userLogin(userAccount, userPassword, request);
     }
 
+    @PostMapping("/logout")
+    public Result userLogout(HttpServletRequest request) {
+        if (request == null) {
+            return Result.fail("服务器错误！");
+        }
+        return userService.userLogout(request);
+    }
+
     @GetMapping("/current")
     public Result getCurrentUser(HttpServletRequest request) {
         UserDTO userDTO = (UserDTO) request.getSession().getAttribute(USER_LOGIN_STATUS);

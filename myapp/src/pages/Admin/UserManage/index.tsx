@@ -32,6 +32,12 @@ const columns: ProColumns<API.CurrentUser>[] = [
   {
     title: '性别',
     dataIndex: 'gender',
+    valueType: 'select',
+    valueEnum: {
+      0: { text: '女' },
+      1: { text: '男' },
+      2: { text: '保密' },
+    },
   },
   {
     title: '手机号',
@@ -46,6 +52,18 @@ const columns: ProColumns<API.CurrentUser>[] = [
   {
     title: '状态',
     dataIndex: 'userStatus',
+    valueType: 'select',
+    valueEnum: {
+      0: { text: '正常', status: 'Default' },
+      1: {
+        text: '已封号',
+        status: 'Success',
+      },
+      3: {
+        text: '已注销',
+        status: 'Success',
+      },
+    },
   },{
     title: '角色',
     dataIndex: 'userRole',
@@ -63,33 +81,6 @@ const columns: ProColumns<API.CurrentUser>[] = [
     dataIndex: 'createTime',
     valueType: 'dateTime',
   },
-  // {
-  //   disable: true,
-  //   title: '状态',
-  //   dataIndex: 'state',
-  //   filters: true,
-  //   onFilter: true,
-  //   ellipsis: true,
-  //
-  // },
-  // {
-  //   disable: true,
-  //   title: '标签',
-  //   dataIndex: 'labels',
-  //   search: false,
-  //   renderFormItem: (_, { defaultRender }) => {
-  //     return defaultRender(_);
-  //   },
-  //   render: (_, record) => (
-  //     <Space>
-  //       {record.labels.map(({ name, color }) => (
-  //         <Tag color={color} key={name}>
-  //           {name}
-  //         </Tag>
-  //       ))}
-  //     </Space>
-  //   ),
-  // },
   {
     title: '操作',
     valueType: 'option',
