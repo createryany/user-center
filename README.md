@@ -157,6 +157,22 @@ service 层对业务逻辑的校验（有可能被 controller 之外的类调用
 
 # 前端实现
 
+
+
+## 前后端交互
+
+前端需要向后端发送请求
+
+前端 ajax 来请求后端
+
+axios 封装了 ajax
+
+request 是 ant design 项目又封装了一次
+
+追踪 request 源码：用到了 umi 的插件、requestConfig 是一个配置
+
+
+
 ## 技术选型
 
 前端：
@@ -166,8 +182,36 @@ service 层对业务逻辑的校验（有可能被 controller 之外的类调用
 3.  组件库 Ant Design + Umi  
 4. Ant Design Pro（现成的管理系统）
 
+
+
 ## 框架瘦身
 
 初始化框架 Ant Design Pro
 
- 
+### Ant Design Pro（Umi 框架）
+
+- app.tsx 项目全局入口文件，定义了整个项目中使用的公共数据（比如用户信息）
+
+- access.ts 控制用户的访问权限
+
+- 首次访问页面（刷新页面），进入 app.tsx，执行 getInitialState 方法，该方法的返回值就是全局可用的状态值。
+
+- MFSU：前端编译优化
+
+  Ant Design 组件库 => React 
+
+  Ant Design Procomponents => Ant Design
+
+  Ant Design Pro 后台管理系统 => Ant Design、React、Ant Design Procomponents、其他的库
+
+
+
+### ProComponents 高级表单
+
+1. 通过 columns 定义表格有哪些列
+2. columns 属性
+   - dataIndex 对应返回数据对象的属性
+   - title 表格列名
+   - copyable 是否允许复制
+   - ellipsis 是否允许缩略
+   - valueType：用于声明这一列的类型（dateTime、select）
