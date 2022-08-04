@@ -60,11 +60,22 @@ public class UserController {
         return userService.userLogin(userAccount, userPassword, request);
     }
 
+    @GetMapping("/current")
+    public Result getCurrentUser(HttpServletRequest request) {
+        UserDTO userDTO = (UserDTO) request.getSession().getAttribute(USER_LOGIN_STATUS);
+        if (userDTO == null) {
+            return Result.fail("用户信息错误！");
+        }
+        Long userId = userDTO.getId();
+        User user = userService.getById(userId);
+        return userService.getSafetyUser(user);
+    }
+
     @GetMapping("/search")
     public Result searchUsers(String username, HttpServletRequest request) {
         Result result = checkAdmin(request);
-        if (Boolean.FALSE.equals(result.getSuccess())) {
-            return Result.fail(result.getErrorMsg());
+        if (Boolean.FALSE.equals(result.getStatus())) {
+            return Result.fail(result.getErrorMessage());
         }
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         if (StringUtils.isNoneBlank(username)) {
@@ -78,8 +89,8 @@ public class UserController {
     @PostMapping("/delete")
     public Result deleteUser(@RequestBody long id, HttpServletRequest request) {
         Result result = checkAdmin(request);
-        if (Boolean.FALSE.equals(result.getSuccess())) {
-            return Result.fail(result.getErrorMsg());
+        if (Boolean.FALSE.equals(result.getStatus())) {
+            return Result.fail(result.getErrorMessage());
         }
         if (id <= 0) {
             return Result.fail("没有找到要删除的用户！");

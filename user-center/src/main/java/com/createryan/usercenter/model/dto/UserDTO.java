@@ -1,7 +1,9 @@
 package com.createryan.usercenter.model.dto;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -11,7 +13,7 @@ import java.util.Date;
  * @date 2022/8/4 1:31
  */
 @Data
-public class UserDTO {
+public class UserDTO implements Serializable {
     /**
      * id
      */
@@ -61,4 +63,7 @@ public class UserDTO {
      * 用户角色.0-普通用户，1-管理员用户
      */
     private Integer userRole;
+
+    @TableField(exist = false)
+    private static final long serialVersionUID = 7490358861689168700L;
 }
