@@ -11,14 +11,14 @@ const Footer: React.FC = () => {
       links={[
         {
           key: 'Yan-music',
-          title: 'Yan-music',
-          href: 'http://www.creatercc.com',
+          title: 'Yan-音乐馆',
+          href: 'http://music.creatercc.com',
           blankTarget: true,
         },
         {
-          key: 'Yan-music-server',
-          title: 'Yan-music-server',
-          href: 'http://admin.creatercc.com',
+          key: 'AllYi编程知识星球',
+          title: 'AllYi编程知识星球',
+          href: 'http://www.creatercc.com',
           blankTarget: true,
         },
         {
