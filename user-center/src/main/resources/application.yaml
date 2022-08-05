@@ -9,7 +9,7 @@ spring:
   session:
     timeout: 86400
 server:
-  port: 3090
+  port: 4090
   servlet:
     context-path: /api
 
