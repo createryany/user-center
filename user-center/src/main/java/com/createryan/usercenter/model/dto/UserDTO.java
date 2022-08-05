@@ -64,6 +64,11 @@ public class UserDTO implements Serializable {
      */
     private Integer userRole;
 
+    /**
+     * 星球编号
+     */
+    private String planetCode;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 7490358861689168700L;
 }

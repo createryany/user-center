@@ -2,11 +2,14 @@ package com.createryan.usercenter.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.createryan.usercenter.common.BaseResponse;
+import com.createryan.usercenter.common.ErrorCode;
+import com.createryan.usercenter.common.ResultUtils;
+import com.createryan.usercenter.execption.BusinessExecption;
 import com.createryan.usercenter.model.domain.User;
 import com.createryan.usercenter.model.dto.UserDTO;
 import com.createryan.usercenter.service.UserService;
 import com.createryan.usercenter.mapper.UserMapper;
-import com.createryan.usercenter.utils.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -35,33 +38,43 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     private UserMapper userMapper;
 
     @Override
-    public Result userRegister(String userAccount, String userPassword, String checkPassword) {
+    public BaseResponse<Object> userRegister(String userAccount, String userPassword, String checkPassword, String planetCode) {
         // 1.校验
-        if (StringUtils.isAnyBlank(userAccount, userPassword, checkPassword)) {
-            return Result.fail("请填写账号密码或确认密码");
+        if (StringUtils.isAnyBlank(userAccount, userPassword, checkPassword, planetCode)) {
+            throw new BusinessExecption(ErrorCode.NULL_ERROR);
         }
         if (userAccount.length() < 4) {
-            return Result.fail("账号长度不能小于 4");
+            throw new BusinessExecption(ErrorCode.PARAMS_ERROR, "账号长度过短");
         }
         if (userPassword.length() < 8 || checkPassword.length() < 8) {
-            return Result.fail("密码长度不能小于 8");
+            throw new BusinessExecption(ErrorCode.PARAMS_ERROR, "密码长度过短");
+        }
+        if (planetCode.length() > 5) {
+            throw new BusinessExecption(ErrorCode.PARAMS_ERROR, "星球编号过长");
         }
         // 账户名不能包含特殊字符
         String validPattern = ".*[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！ @#￥%……&*()——+|{}【】‘；：”“’。，、？\\\\]+.*";
         Matcher matcher = Pattern.compile(validPattern).matcher(userAccount);
         if (matcher.find()) {
-            return Result.fail("账号含有非法字符");
+            throw new BusinessExecption(ErrorCode.PARAMS_ERROR, "账号含有非法字符");
         }
         // 原密码和校验密码相同
         if (!userPassword.equals(checkPassword)) {
-            return Result.fail("两次输入的密码不一致");
+            throw new BusinessExecption(ErrorCode.PARAMS_ERROR, "两次输入的密码不一致");
         }
         // 账户不能重复
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_account", userAccount);
         long count = userMapper.selectCount(queryWrapper);
         if (count > 0) {
-            return Result.fail("该账户已存在");
+            throw new BusinessExecption(ErrorCode.PARAMS_ERROR, "该账号已存在");
+        }
+        // 星球编号不能重复
+        queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("planet_code", planetCode);
+        count = userMapper.selectCount(queryWrapper);
+        if (count > 0) {
+            throw new BusinessExecption(ErrorCode.PARAMS_ERROR, "该编号已注册");
         }
         // 2.加密
         String encryptPassword = DigestUtils.md5DigestAsHex((SALT + userPassword).getBytes());
@@ -69,30 +82,31 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         User user = new User();
         user.setUserAccount(userAccount);
         user.setUserPassword(encryptPassword);
+        user.setPlanetCode(planetCode);
         boolean saveResult = this.save(user);
         if (!saveResult) {
-            return Result.fail("服务器错误");
+            throw new BusinessExecption(ErrorCode.SYSTEM_ERROR);
         }
-        return Result.ok("注册成功");
+        return ResultUtils.success("注册成功");
     }
 
     @Override
-    public Result userLogin(String userAccount, String userPassword, HttpServletRequest request) {
+    public BaseResponse<UserDTO> userLogin(String userAccount, String userPassword, HttpServletRequest request) {
         // 1.校验
         if (StringUtils.isAnyBlank(userAccount, userPassword)) {
-            return Result.fail("用户名或密码不能为空");
+            throw new BusinessExecption(ErrorCode.PARAMS_ERROR, "账号和密码不能为空");
         }
         if (userAccount.length() < 4) {
-            return Result.fail("账号长度不能小于 4");
+            throw new BusinessExecption(ErrorCode.PARAMS_ERROR, "账号长度过短");
         }
         if (userPassword.length() < 8) {
-            return Result.fail("密码长度不能小于 8");
+            throw new BusinessExecption(ErrorCode.PARAMS_ERROR, "密码长度过短");
         }
         // 账户名不能包含特殊字符
         String validPattern = ".*[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*()——+|{}【】‘；：”“’。，、？\\\\]+.*";
         Matcher matcher = Pattern.compile(validPattern).matcher(userAccount);
         if (matcher.find()) {
-            return Result.fail("账号含有非法字符");
+            throw new BusinessExecption(ErrorCode.PARAMS_ERROR, "账号含有非法字符");
         }
         // 2.加密
         String encryptPassword = DigestUtils.md5DigestAsHex((SALT + userPassword).getBytes());
@@ -104,20 +118,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         // 用户不存在
         if (user == null) {
             log.info("user login faild, userAccount cannot match userPassword");
-            return Result.fail("用户名和密码不匹配");
+            throw new BusinessExecption(ErrorCode.PARAMS_ERROR, "账号和密码不匹配");
         }
         // 3.用户脱敏
-        UserDTO safetyUser = (UserDTO) getSafetyUser(user).getData();
+        UserDTO safetyUser = getSafetyUser(user).getData();
         // 4.记录用户登录态
         request.getSession().setAttribute(USER_LOGIN_STATUS, safetyUser);
-        return Result.ok("登录成功");
+        return ResultUtils.success(safetyUser);
     }
 
 
     @Override
-    public Result getSafetyUser(User originUser) {
+    public BaseResponse<UserDTO> getSafetyUser(User originUser) {
         if (originUser == null) {
-            return Result.fail("用户信息错误！");
+            throw new BusinessExecption(ErrorCode.PARAMS_ERROR);
         }
         UserDTO safetyUser = new UserDTO();
         safetyUser.setId(originUser.getId());
@@ -130,7 +144,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         safetyUser.setUserStatus(originUser.getUserStatus());
         safetyUser.setCreateTime(originUser.getCreateTime());
         safetyUser.setUserRole(originUser.getUserRole());
-        return Result.ok(null, safetyUser);
+        safetyUser.setPlanetCode(originUser.getPlanetCode());
+        return ResultUtils.success(safetyUser);
     }
 
     /**
@@ -140,9 +155,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
      * @return 退出成功
      */
     @Override
-    public Result userLogout(HttpServletRequest request) {
+    public BaseResponse<Object> userLogout(HttpServletRequest request) {
         request.getSession().removeAttribute(USER_LOGIN_STATUS);
-        return Result.ok("退出成功");
+        return ResultUtils.success("退出成功");
     }
 }
 

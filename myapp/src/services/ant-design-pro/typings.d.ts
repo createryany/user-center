@@ -13,7 +13,18 @@ declare namespace API {
     userStatus: number;
     createTime: Date;
     userRole: number;
+    planetCode: string;
   };
+
+  /**
+   * 通用返回类
+   */
+  type BaseResponse<T> = {
+    code: number;
+    data: T;
+    message: string;
+    description: string;
+  }
 
   type LoginResult = Object;
 
@@ -62,6 +73,7 @@ declare namespace API {
     userAccount?: string;
     userPassword?: string;
     checkPassword?: string;
+    planetCode?: string;
     type?: string;
   };
 

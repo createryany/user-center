@@ -215,3 +215,245 @@ request 是 ant design 项目又封装了一次
    - copyable 是否允许复制
    - ellipsis 是否允许缩略
    - valueType：用于声明这一列的类型（dateTime、select）
+
+## 扩展功能
+
+注册用户校验（仅限制星球用户注册，注册必须使用星球编号）
+
+后端添加端口，前端添加数据收集框
+
+## 后端优化
+
+（本项目所用为utils下的Result类）用户成功和错误信息的返回  （在项目目录下（utils））
+
+```java
+/**
+ * 通用返回类（包含错误信息处理）
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Result {
+    private Boolean status;
+    private String successMessage;
+    private String errorMessage;
+    private Object data;
+
+    public static Result ok(){
+        return new Result(true, null, null, null);
+    }
+    public static Result ok(String successMessage){
+        return new Result(true, successMessage, null, null);
+    }
+    public static Result ok(Object data){
+        return new Result(true, null, null, data);
+    }
+    public static Result ok(String successMessage, Object data){
+        return new Result(true, successMessage, null, data);
+    }
+    public static Result fail(String errorMessage){
+        return new Result(false, null, errorMessage, null);
+    }
+}
+```
+
+（另一种标准通用异常处理类）（在项目目录下（common））
+
+1. 通用返回对象
+
+   1. 自定义返回错误码
+   2. 返回类型支持返回正常和错误
+
+   ```java
+   package com.createryan.usercenter.common;
+   
+   import lombok.Data;
+   
+   import java.io.Serializable;
+   
+   /**
+    * 通用返回类
+    *
+    * @author: createryan
+    * @date 2022/8/5 3:18
+    */
+   @Data
+   public class BaseResponse<T> implements Serializable {
+   
+       private int code;
+       private T data;
+       private String message;
+       private String errorMessage;
+       private String description;
+   
+       public BaseResponse(int code, T data, String message, String description) {
+           this.code = code;
+           this.data = data;
+           this.message = message;
+           this.description = description;
+       }
+   
+       public BaseResponse(int code, T data, String message) {
+           this(code, data, message, "");
+       }
+   
+       public BaseResponse(int code, T data) {
+           this(code, data, "", "");
+       }
+   
+       public BaseResponse(ErrorCode errorCode) {
+           this(errorCode.getCode(), null, errorCode.getMessage(), errorCode.getDescription());
+       }
+   }
+   
+   ```
+
+
+
+```java
+package com.createryan.usercenter.common;
+
+
+/**
+ * 错误码(枚举类)
+ *
+ * @author: createryan
+ * @date 2022/8/5 3:18
+ */
+public enum ErrorCode {
+
+    SUCCESS(0, "ok", ""),
+    PARAMS_ERROR(40000, "请求参数错误", ""),
+    NULL_ERROR(40001, "请求数据为空", ""),
+    NO_LOGIN(40100, "未登录", ""),
+    NO_AUTH(40101, "无权限", "");
+
+    private final int code;
+
+    /**
+     * 状态码信息
+     */
+    private final String message;
+
+    /**
+     * 状态码信息描述
+     */
+    private final String description;
+
+    ErrorCode(int code, String message, String description) {
+        this.code = code;
+        this.message = message;
+        this.description = description;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+}
+
+```
+
+
+
+```java
+/**
+ * 返回工具类
+ */
+public class ResultUtils {
+    
+    /**
+     * 成功
+     */
+    public static <T> BaseResponse<T> success(T data) {
+        return new BaseResponse<>(0, data, "ok");
+    }
+    
+    /**
+     * 失败
+     */
+    public static BaseResponse error(ErrorCode errorCode) {
+        return new BaseResponse<>(errorCode);
+    }
+}
+```
+2. 封装全局异常处理
+
+   在项目目录下（execption）
+
+   1. 定义业务异常类
+      1. 相对于 Java 异常类，支持更多的字段    
+      2. 自定义构造函数，更灵活 / 快捷的设置字段
+
+   ```java
+   package com.createryan.usercenter.execption;
+   
+   import com.createryan.usercenter.common.ErrorCode;
+   
+   /**
+    * 自定义异常
+    *
+    * @author: createryan
+    * @date 2022/8/5 3:27
+    */
+   public class BusinessExecption extends RuntimeException{
+   
+       private final int code;
+   
+       private final String description;
+   
+       public BusinessExecption(String message, int code, String description) {
+           super(message);
+           this.code = code;
+           this.description = description;
+       }
+   
+       public BusinessExecption(ErrorCode errorCode) {
+           super(errorCode.getMessage());
+           this.code = errorCode.getCode();
+           this.description = errorCode.getDescription();
+       }
+   
+       public BusinessExecption(ErrorCode errorCode, String description) {
+           super(errorCode.getMessage());
+           this.code = errorCode.getCode();
+           this.description = description;
+       }
+   
+       public int getCode() {
+           return code;
+       }
+   
+       public String getDescription() {
+           return description;
+       }
+   }
+   
+   ```
+   2. 编写全局异常处理类
+
+      作用：
+
+      1. 捕获代码中的所有异常，内部消耗，让前端得到更多的业务报错 / 信息
+      2. 屏蔽掉项目框架本身的异常（不暴露服务器内部状态）
+      3. 集中处理，比如：记录日志
+
+​			实现：
+
+​				1. spring AOP：在调用方法前进行额外的处理
+
+3. (TODO)全局请求日志和登录校验
+
+
+
+## 前端优化
+
+1. 适配后端的全局请求信息处理
+

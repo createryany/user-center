@@ -26,32 +26,27 @@ const Register: React.FC = () => {
       return;
     }
     // 注册
-    const result = await register(values);
-    const {status, successMessage, errorMessage}: any = result;
-    console.log('success s', status);
-    if (status) {
-      console.log(status, successMessage, errorMessage);
-      message.success(successMessage);
-      /**
-       * 此方法会跳转到 redirect 参数所在的位置
-       * */
-      if (!history) return;
-      const {query} = history.location;
-      const {redirect} = query as {
-        redirect: string;
-      };
-      if (redirect) {
+    try {
+      const result = await register(values);
+      if (result.code === 0 || result.data > 0) {
+        message.success(result.description);
+        /**
+         * 此方法会跳转到 redirect 参数所在的位置
+         * */
+        if (!history) return;
+        const {query} = history.location;
         history.push({
           pathname: loginPath,
           query
         });
+        return;
+      } else {
+        throw new Error(result.description);
       }
-      history.push(loginPath);
-      return;
-    } else {
-      message.error(errorMessage);
+    } catch (error: any) {
+      const defaultRegisterFailureMessage = '注册失败，请重试！';
+      message.error(error.message ?? defaultRegisterFailureMessage);
     }
-    return;
   };
 
   return (
@@ -128,6 +123,20 @@ const Register: React.FC = () => {
                     min: 8,
                     type: 'string',
                     message: '密码长度不能小于 8',
+                  },
+                ]}
+              />
+              <ProFormText
+                name="planetCode"
+                fieldProps={{
+                  size: 'large',
+                  prefix: <UserOutlined className={styles.prefixIcon}/>,
+                }}
+                placeholder={'请输入星球编号'}
+                rules={[
+                  {
+                    required: true,
+                    message: '星球编号不能为空',
                   },
                 ]}
               />

@@ -19,6 +19,9 @@ public class Result {
     public static Result ok(String successMessage){
         return new Result(true, successMessage, null, null);
     }
+    public static Result ok(Object data){
+        return new Result(true, null, null, data);
+    }
     public static Result ok(String successMessage, Object data){
         return new Result(true, successMessage, null, data);
     }

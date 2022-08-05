@@ -1,8 +1,9 @@
 package com.createryan.usercenter.service;
 
+import com.createryan.usercenter.common.BaseResponse;
 import com.createryan.usercenter.model.domain.User;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.createryan.usercenter.utils.Result;
+import com.createryan.usercenter.model.dto.UserDTO;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,9 +22,10 @@ public interface UserService extends IService<User> {
      * @param userAccount   用户账户
      * @param userPassword  用户密码
      * @param checkPassword 校验密码
+     * @param planetCode 星球编号
      * @return 新用户id
      */
-    Result userRegister(String userAccount, String userPassword, String checkPassword);
+    BaseResponse<Object> userRegister(String userAccount, String userPassword, String checkPassword, String planetCode);
 
     /**
      * 用户登录
@@ -32,7 +34,7 @@ public interface UserService extends IService<User> {
      * @param userPassword 用户密码
      * @return 脱敏后的用户信息
      */
-    Result userLogin(String userAccount, String userPassword, HttpServletRequest request);
+    BaseResponse<UserDTO> userLogin(String userAccount, String userPassword, HttpServletRequest request);
 
     /**
      * 用户脱敏
@@ -40,7 +42,7 @@ public interface UserService extends IService<User> {
      * @param originUser
      * @return
      */
-    Result getSafetyUser(User originUser);
+    BaseResponse<UserDTO> getSafetyUser(User originUser);
 
     /**
      * 用户注销
@@ -48,5 +50,5 @@ public interface UserService extends IService<User> {
      * @param request
      * @return 退出成功
      */
-    Result userLogout(HttpServletRequest request);
+    BaseResponse<Object> userLogout(HttpServletRequest request);
 }

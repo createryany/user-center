@@ -15,3 +15,17 @@ Bsrc/main/java/com/createryan/usercenter/UserCenterApplication.java,0\7\07e9524
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+…
+Usrc/main/java/com/createryan/usercenter/model/domain/request/UserRegisterRequest.java,0\0\00d822a745b076c17f7b72d9ec775058582c7e66
+n
+>src/main/java/com/createryan/usercenter/model/dto/UserDTO.java,0\d\0d5425fa355a601b5cf0c5da896018540454a5b4
+n
+>src/main/java/com/createryan/usercenter/model/domain/User.java,1\5\1508fdd1d4a1a0884116f05bab0c70a1ca8ed630
+p
+@src/main/java/com/createryan/usercenter/common/BaseResponse.java,8\f\8f49671c6634125a9127f287b78d93a41e3d09f9
+x
+Hsrc/main/java/com/createryan/usercenter/execption/BusinessExecption.java,9\d\9db5ecff258bda9e7f949100fbdf943f459c202c
+i
+9src/main/java/com/createryan/usercenter/utils/Result.java,b\c\bce612b597852bae21bf0230f34df5e975209b6d
+t
+Dsrc/test/java/com/createryan/usercenter/service/UserServiceTest.java,0\2\025db97c8427658b3221bd2168ce4eec86b0e5b0
