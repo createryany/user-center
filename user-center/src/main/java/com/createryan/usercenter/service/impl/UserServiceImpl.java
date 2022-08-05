@@ -87,7 +87,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         if (!saveResult) {
             throw new BusinessExecption(ErrorCode.SYSTEM_ERROR);
         }
-        return ResultUtils.success("注册成功");
+        return ResultUtils.success(user.getId());
     }
 
     @Override

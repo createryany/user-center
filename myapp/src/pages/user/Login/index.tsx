@@ -3,7 +3,6 @@ import {login} from '@/services/ant-design-pro/api';
 import {
   LockOutlined,
   UserOutlined,
-
 } from '@ant-design/icons';
 import {
   LoginForm,
@@ -11,14 +10,14 @@ import {
   ProFormText,
 } from '@ant-design/pro-components';
 import {Divider, message, Space, Tabs} from 'antd';
-import React, { useState } from 'react';
-import { history } from 'umi';
+import React, {useState} from 'react';
+// @ts-ignore
+import {history} from 'umi';
 import {ALLYI_LINK, SYSTEM_LOGO} from "@/constants";
 import styles from './index.less';
 import {useModel} from "@@/plugin-model/useModel";
 
 const registerPath = '/user/register';
-
 const Login: React.FC = () => {
   const [type, setType] = useState<string>('account');
   const {initialState, setInitialState} = useModel('@@initialState');
@@ -32,25 +31,28 @@ const Login: React.FC = () => {
   };
 
   const handleSubmit = async (values: API.LoginParams) => {
-    const { userAccount, userPassword } = values;
     // 登录
-    const result = await login({userAccount, userPassword});
-    const {status, successMessage, errorMessage}: any = result;
-    if (status) {
-      message.success(successMessage);
-      await fetchUserInfo();
-      /** 此方法会跳转到 redirect 参数所在的位置 */
-
-      if (!history) return;
-      const {query} = history.location;
-      const {redirect} = query as {
-        redirect: string;
-      };
-      history.push(redirect || '/');
-      return;
-    } else {
-      message.error(errorMessage);
+    try {
+      const user = await login({...values, type});
+      if (user) {
+        const defaultLoginSuccessMessage = '登录成功';
+        message.success(defaultLoginSuccessMessage);
+        await fetchUserInfo();
+        console.log(user);
+        /** 此方法会跳转到 redirect 参数所在的位置 */
+        if (!history) return;
+        const {query} = history.location;
+        const {redirect} = query as {
+          redirect: string;
+        };
+        history.push(redirect || '/');
+        return;
+      }
+    } catch (error) {
+      const defaultLoginFailureMessage = '登录失败，请重试！';
+      message.error(defaultLoginFailureMessage);
     }
+
   };
 
   return (
@@ -84,11 +86,6 @@ const Login: React.FC = () => {
                   {
                     required: true,
                     message: '账号是必填项！',
-                  },
-                  {
-                    min: 4,
-                    type: 'string',
-                    message: '账号长度不能小于 4！',
                   },
                 ]}
               />

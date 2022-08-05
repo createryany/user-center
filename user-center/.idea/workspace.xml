@@ -5,24 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d4a8f19-b41a-4427-b364-b39c3402029b" name="变更" comment="2.2用户中心(用户服务类的注册和测试)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/common/BaseResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/common/ErrorCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/common/ResultUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/execption/BusinessExecption.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/execption/GlobalExecptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/pages/Admin/UserManage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/pages/Admin/UserManage/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myapp/src/plugins/globalRequest.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/.mfsu/MFSU_CACHE.json" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/.mfsu/MFSU_CACHE.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/1.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/10.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/10.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/2.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/3.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/4.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/5.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/6.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/7.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/7.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/8.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/8.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/9.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/9.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/index.pack.old" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../myapp/src/pages/user/Register/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/pages/user/Register/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/services/ant-design-pro/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/services/ant-design-pro/api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../myapp/src/services/ant-design-pro/typings.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/services/ant-design-pro/typings.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/model/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/model/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/model/domain/request/UserRegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/model/domain/request/UserRegisterRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/model/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/model/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/utils/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/utils/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/createryan/usercenter/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/createryan/usercenter/service/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +186,7 @@
       <workItem from="1659535213887" duration="10680000" />
       <workItem from="1659547301772" duration="6663000" />
       <workItem from="1659593237665" duration="22937000" />
-      <workItem from="1659674299464" duration="649000" />
+      <workItem from="1659674299464" duration="4737000" />
     </task>
     <task id="LOCAL-00001" summary="2.1.1用户中心(测试用户服务)">
       <created>1659521231016</created>

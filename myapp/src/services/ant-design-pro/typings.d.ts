@@ -21,9 +21,9 @@ declare namespace API {
    */
   type BaseResponse<T> = {
     code: number;
-    data: T;
+    data?: T;
     message: string;
-    description: string;
+    description?: string;
   }
 
   type LoginResult = Object;

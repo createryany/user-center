@@ -76,7 +76,7 @@ public class UserController {
     public BaseResponse<UserDTO> getCurrentUser(HttpServletRequest request) {
         UserDTO userDTO = (UserDTO) request.getSession().getAttribute(USER_LOGIN_STATUS);
         if (userDTO == null) {
-            throw new BusinessExecption(ErrorCode.NULL_ERROR);
+            throw new BusinessExecption(ErrorCode.NO_LOGIN);
         }
         Long userId = userDTO.getId();
         User user = userService.getById(userId);
