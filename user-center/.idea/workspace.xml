@@ -5,24 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d4a8f19-b41a-4427-b364-b39c3402029b" name="变更" comment="2.2用户中心(用户服务类的注册和测试)">
-      <change afterPath="$PROJECT_DIR$/../myapp/src/plugins/globalRequest.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/.mfsu/MFSU_CACHE.json" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/.mfsu/MFSU_CACHE.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/0.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/1.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/10.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/10.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/2.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/3.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/4.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/5.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/6.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/7.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/7.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/8.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/8.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/9.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/9.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/index.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/.umi/.cache/webpack/default-development/index.pack.old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/pages/user/Register/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/pages/user/Register/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-prod.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/components/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/components/Footer/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/components/RightContent/AvatarDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/components/RightContent/AvatarDropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/src/pages/Admin/UserManage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/pages/Admin/UserManage/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../myapp/src/services/ant-design-pro/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/services/ant-design-pro/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myapp/src/services/ant-design-pro/typings.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/src/services/ant-design-pro/typings.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/user.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/createryan/usercenter/service/impl/UserServiceImpl.java" afterDir="false" />
     </list>
@@ -58,7 +49,7 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="localRepository" value="C:\MyApplication\maven\apache-maven-3.6.3" />
-        <option name="mavenHome" value="$PROJECT_DIR$/../../../../../../MyApplication/maven/apache-maven-3.6.3" />
+        <option name="mavenHome" value="C:/MyApplication/maven/apache-maven-3.6.3" />
         <option name="showDialogWithAdvancedSettings" value="true" />
         <option name="useMavenConfig" value="true" />
         <option name="userSettingsFile" value="C:\MyApplication\maven\apache-maven-3.6.3\conf\settings.xml" />
@@ -97,13 +88,17 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
-    <property name="settings.editor.selected.configurable" value="IntelliLang.Configuration" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workSpace\code\user-center\src\main\resources" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.createryan.usercenter.model.domain" />
     </key>
@@ -186,7 +181,7 @@
       <workItem from="1659535213887" duration="10680000" />
       <workItem from="1659547301772" duration="6663000" />
       <workItem from="1659593237665" duration="22937000" />
-      <workItem from="1659674299464" duration="4737000" />
+      <workItem from="1659674299464" duration="9835000" />
     </task>
     <task id="LOCAL-00001" summary="2.1.1用户中心(测试用户服务)">
       <created>1659521231016</created>

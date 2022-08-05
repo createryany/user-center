@@ -84,14 +84,14 @@ public class UserController {
     }
 
     @GetMapping("/search")
-    public BaseResponse<List<Object>> searchUsers(String username, HttpServletRequest request) {
+    public BaseResponse<List<UserDTO>> searchUsers(String username, HttpServletRequest request) {
         checkAdmin(request);
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         if (StringUtils.isNoneBlank(username)) {
             queryWrapper.like("username", username);
         }
         List<User> userList = userService.list(queryWrapper);
-        List<Object> safatyUser = userList.stream().map(user -> userService.getSafetyUser(user).getData()).collect(Collectors.toList());
+        List<UserDTO> safatyUser = userList.stream().map(user -> userService.getSafetyUser(user).getData()).collect(Collectors.toList());
         return ResultUtils.success(safatyUser);
     }
 

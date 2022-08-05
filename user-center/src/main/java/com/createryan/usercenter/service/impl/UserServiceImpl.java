@@ -155,9 +155,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
      * @return 退出成功
      */
     @Override
-    public BaseResponse<Object> userLogout(HttpServletRequest request) {
+    public BaseResponse userLogout(HttpServletRequest request) {
         request.getSession().removeAttribute(USER_LOGIN_STATUS);
-        return ResultUtils.success("退出成功");
+        return ResultUtils.success();
     }
 }
 

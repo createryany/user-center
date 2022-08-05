@@ -32,8 +32,7 @@ export async function getInitialState(): Promise<{
 }> {
   const fetchUserInfo = async () => {
     try {
-      const result = await queryCurrentUser();
-      return result.data;
+      return await queryCurrentUser();
     } catch (error) {
       history.push(loginPath);
     }
@@ -42,13 +41,16 @@ export async function getInitialState(): Promise<{
   // 如果是无需登录页面，不执行
   if (NONEED_LOGIN_WHITE_LIST.includes(history.location.pathname)) {
     return {
+      // @ts-ignore
       fetchUserInfo,
       settings: defaultSettings,
     };
   }
   const currentUser = await fetchUserInfo();
   return {
+    // @ts-ignore
     fetchUserInfo,
+    // @ts-ignore
     currentUser,
     settings: defaultSettings,
   };
