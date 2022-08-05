@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d4a8f19-b41a-4427-b364-b39c3402029b" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-prod.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-prod.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +173,7 @@
       <workItem from="1659547301772" duration="6663000" />
       <workItem from="1659593237665" duration="22937000" />
       <workItem from="1659674299464" duration="10800000" />
-      <workItem from="1659698769295" duration="1327000" />
+      <workItem from="1659698769295" duration="2652000" />
     </task>
     <task id="LOCAL-00001" summary="2.1.1用户中心(测试用户服务)">
       <created>1659521231016</created>
@@ -189,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659698629689</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="5.用户中心(上线部署)">
+      <created>1659701436630</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1659701436630</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
