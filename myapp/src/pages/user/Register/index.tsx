@@ -29,7 +29,6 @@ const Register: React.FC = () => {
     // 注册
     try {
       const res = await register(values);
-      console.log(res);
       if (res) {
         const defaultRegisterSuccessMessage = '注册成功';
         message.success(defaultRegisterSuccessMessage);
@@ -67,7 +66,7 @@ const Register: React.FC = () => {
             <Tabs activeKey={type} onChange={setType}>
               <Tabs.TabPane key="account" tab={'账号密码注册'}/>
             </Tabs>
-            {type === 'account' && (
+            {(
               <>
                 <ProFormText
                   name="userAccount"

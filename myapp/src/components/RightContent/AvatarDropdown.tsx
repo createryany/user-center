@@ -18,18 +18,38 @@ export type GlobalHeaderRightProps = {
 /**
  * 退出登录，并且将当前的 url 保存
  */
-const loginOut = async () => {
+// const logOut = async () => {
+//   await outLogin();
+//   const defaultLogoutSuccessMessage = "退出成功";
+//   message.success(defaultLogoutSuccessMessage);
+//   const {query = {}, search, pathname} = history.location;
+//   console.log(query, search, pathname);
+//   const {redirect} = query;
+//   // Note: There may be security issues, please note
+//   if (window.location.pathname !== '/user/login' && !redirect) {
+//     history.replace({
+//       pathname: '/user/login',
+//       search: stringify({
+//         redirect: pathname + search,
+//       }),
+//     });
+//   }
+// };
+/**
+ * 退出登录，删除当前保存的 url
+ */
+const logOut = async () => {
   await outLogin();
   const defaultLogoutSuccessMessage = "退出成功";
   message.success(defaultLogoutSuccessMessage);
-  const {query = {}, search, pathname} = history.location;
+  const {query = {}} = history.location;
   const {redirect} = query;
   // Note: There may be security issues, please note
   if (window.location.pathname !== '/user/login' && !redirect) {
     history.replace({
       pathname: '/user/login',
       search: stringify({
-        redirect: pathname + search,
+        redirect: 0,
       }),
     });
   }
@@ -43,7 +63,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({menu}) => {
       const {key} = event;
       if (key === 'logout') {
         setInitialState((s: any) => ({...s, currentUser: undefined}));
-        loginOut();
+        logOut();
         return;
       }
       history.push(`/account/${key}`);

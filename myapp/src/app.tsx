@@ -12,8 +12,7 @@ import type {RequestConfig} from "@@/plugin-request/request";
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
-const registerPath = '/user/register';
-const NONEED_LOGIN_WHITE_LIST = [loginPath, registerPath]
+const NONEED_LOGIN_WHITE_LIST = ['/user/register', '/', loginPath]
 
 /** 获取用户信息比较慢的时候会展示一个 loading */
 export const initialStateConfig = {
@@ -71,7 +70,7 @@ export const layout: RunTimeLayoutConfig = ({initialState, setInitialState}) => 
         return;
       }
       // 如果没有登录，重定向到 login
-      if (!initialState?.currentUser && location.pathname !== loginPath) {
+      if (!initialState?.currentUser) {
         history.push(loginPath);
       }
     },

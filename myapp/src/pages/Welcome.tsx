@@ -16,7 +16,7 @@ const Welcome: React.FC = () => {
     <PageContainer>
       <Card>
         <Alert
-          message={'更快更强的重型组件，已经发布。'}
+          message={'欢迎来到AllYi编程知识星球。'}
           type="success"
           showIcon
           banner

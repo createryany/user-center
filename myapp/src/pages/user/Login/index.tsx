@@ -16,8 +16,7 @@ import {history} from 'umi';
 import {ALLYI_LINK, SYSTEM_LOGO} from "@/constants";
 import styles from './index.less';
 import {useModel} from "@@/plugin-model/useModel";
-
-const registerPath = '/user/register';
+import {Link} from "@umijs/preset-dumi/lib/theme";
 const Login: React.FC = () => {
   const [type, setType] = useState<string>('account');
   const {initialState, setInitialState} = useModel('@@initialState');
@@ -38,7 +37,6 @@ const Login: React.FC = () => {
         const defaultLoginSuccessMessage = '登录成功';
         message.success(defaultLoginSuccessMessage);
         await fetchUserInfo();
-        console.log(user);
         /** 此方法会跳转到 redirect 参数所在的位置 */
         if (!history) return;
         const {query} = history.location;
@@ -119,14 +117,7 @@ const Login: React.FC = () => {
               <ProFormCheckbox noStyle name="autoLogin">
                 自动登录
               </ProFormCheckbox>
-              <a
-                style={{
-                  float: 'right',
-                }}
-                href={registerPath}
-              >
-                新用户注册
-              </a>
+              <Link to="/user/register">新用户注册</Link>
               <a
                 style={{
                   float: 'right',

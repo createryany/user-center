@@ -14,7 +14,6 @@ export default [
     name: '管理页',
     icon: 'crown',
     access: 'canAdmin',
-    component: './Admin',
     routes: [
       {path: '/admin/user-manage', name: '用户管理', icon: 'smile', component: './Admin/UserManage'},
       {component: './404'},
